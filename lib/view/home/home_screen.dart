@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:elmenues/theme/app_colors';
+import 'components/dishes_option.dart';
 import 'components/options_component.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -231,7 +232,34 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
                     ]),
-                    DishesComponent()
+                    DishesComponent(
+                      dishOptions: [
+                        DishOption(
+                          name: 'All',
+                          image: Image.asset('assets/images/all.jpeg').image,
+                        ),
+                        DishOption(
+                          name: 'All',
+                          image: Image.asset('assets/images/all.jpeg').image,
+                        ),DishOption(
+                          name: 'All',
+                          image: Image.asset('assets/images/all.jpeg').image,
+                        ),
+                        DishOption(
+                          name: 'All',
+                          image: Image.asset('assets/images/all.jpeg').image,
+                        ),DishOption(
+                          name: 'All',
+                          image: Image.asset('assets/images/all.jpeg').image,
+                        ),DishOption(
+                          name: 'All',
+                          image: Image.asset('assets/images/all.jpeg').image,
+                        ),DishOption(
+                          name: 'All',
+                          image: Image.asset('assets/images/all.jpeg').image,
+                        ),
+                      ],
+                    )
 
 
                   ]),

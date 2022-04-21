@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import '../../../theme/app_colors';
 
 class DishesComponent extends StatefulWidget {
-
-  const DishesComponent({Key? key}) : super(key: key);
+  final List<DishOption> dishOptions;
+  const DishesComponent({Key? key, required this.dishOptions})
+      : super(key: key);
 
   @override
   _DishesComponentState createState() => _DishesComponentState();
@@ -14,11 +15,10 @@ class DishesComponent extends StatefulWidget {
 
 class _DishesComponentState extends State<DishesComponent> {
   bool isSelected = false;
-  int currentSelectedIndex=0;
+  int currentSelectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
         Padding(
@@ -41,24 +41,27 @@ class _DishesComponentState extends State<DishesComponent> {
           ),
         ),
         Container(
-          height: MediaQuery.of(context).size.height*0.15,
+          height: MediaQuery.of(context).size.height * 0.15,
           child: ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: 20,
+            itemCount: widget.dishOptions.length,
             itemBuilder: (context, index) {
               return DishOption(
-                index: index,
-                isSelected: currentSelectedIndex == index,
-                onSelect: () {
-                  setState(() {
-                    currentSelectedIndex = index;
-                  });
-                },
-              );
+                name: 'All',
+                image: Image.asset('assets/images/all.jpeg').image,
+              )
+                  .setIndex(index)
+                  .setIsSelected(currentSelectedIndex == index)
+                  .setOnSelect(() {
+                setState(() {
+                  currentSelectedIndex = index;
+                });
+              });
             },
           ),
-        ),      ],
+        ),
+      ],
     );
   }
 }
