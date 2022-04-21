@@ -1,0 +1,64 @@
+import 'package:elmenues/view/home/components/dishes_option.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import '../../../theme/app_colors';
+
+class DishesComponent extends StatefulWidget {
+
+  const DishesComponent({Key? key}) : super(key: key);
+
+  @override
+  _DishesComponentState createState() => _DishesComponentState();
+}
+
+class _DishesComponentState extends State<DishesComponent> {
+  bool isSelected = false;
+  int currentSelectedIndex=0;
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Discover by dish',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "See All",
+                    style: TextStyle(color: appColor.primary),
+                  ))
+            ],
+          ),
+        ),
+        Container(
+          height: MediaQuery.of(context).size.height*0.15,
+          child: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: 20,
+            itemBuilder: (context, index) {
+              return DishOption(
+                index: index,
+                isSelected: currentSelectedIndex == index,
+                onSelect: () {
+                  setState(() {
+                    currentSelectedIndex = index;
+                  });
+                },
+              );
+            },
+          ),
+        ),      ],
+    );
+  }
+}

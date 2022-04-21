@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+
+AppColor appColor = LightAppColor();
+
+abstract class AppColor {
+  Color get primary;
+
+}
+
+class LightAppColor extends AppColor {
+  Color get primary => Colors.deepOrange;
+
+}
