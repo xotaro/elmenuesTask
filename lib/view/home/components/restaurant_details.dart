@@ -7,7 +7,6 @@ class RestaurantDetails extends StatelessWidget {
   final List<String> tags;
   final ImageProvider logo;
   final double rating;
-  final String? offer;
   // nullable and optional
 
   const RestaurantDetails(
@@ -16,7 +15,6 @@ class RestaurantDetails extends StatelessWidget {
       required this.tags,
       required this.logo,
       required this.rating,
-      this.offer,
        })
       : super(key: key);
 
@@ -29,9 +27,24 @@ class RestaurantDetails extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 5.0, right: 0),
         child: ListTile(
+
           minLeadingWidth: 0,
           contentPadding: EdgeInsets.zero,
-          title:  Text(restaurantName),
+          title:  Row(
+            children: [
+              Expanded(child: Text(restaurantName)),
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  Icon(Icons.star,
+                    color: Colors.yellow.shade800,
+                  size: 20,),
+                  Text('$rating'),
+
+                ],
+              ),
+            ],
+          ),
 
           subtitle: Text(tags.join(", "), overflow: TextOverflow.ellipsis),
 
@@ -41,21 +54,7 @@ class RestaurantDetails extends StatelessWidget {
                 image: logo,
                 fit: BoxFit.contain,
               ).image),
-          trailing: Text.rich(
-            TextSpan(
-              children: [
-                WidgetSpan(
-                    child: Icon(
-                  Icons.star,
-                  color: Colors.yellow.shade800,
-                  size: 0.5,
-                )),
-                TextSpan(
-                  text: '$rating',
-                )
-              ],
-            ),
-          ),
+          
         ),
       ),
     );

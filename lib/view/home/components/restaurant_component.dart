@@ -27,6 +27,7 @@ class RestaurantComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         ImageDelivery(image: image, deliveryTime: deliveryTime),
           RestaurantDetails(
@@ -39,12 +40,13 @@ class RestaurantComponent extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 7.5),
           child: Container(
+            padding: EdgeInsets.zero,
             decoration: BoxDecoration(
               color: Colors.green[50],
               borderRadius: BorderRadius.circular(5)
             ),
             child: Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.all( 5.0),
               child: Row(
                 children: [
                   Icon(
@@ -65,7 +67,11 @@ class RestaurantComponent extends StatelessWidget {
               ),
             ),
           ),
-        ):Container()
+        ):Padding(
+          padding: const EdgeInsets.all(7.5),
+          child: SizedBox(
+          ),
+        )
 
 
       ],

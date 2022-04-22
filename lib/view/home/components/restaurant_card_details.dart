@@ -3,20 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RestaurantCardDetails extends StatelessWidget {
-  // final ImageProvider image;
-  // final String restaurantName;
-  // final int deliveryTime;
-  // final ImageProvider logo;
-  // final List<String> tags;
-  // final double rating;
-  // final String? offer;
+  final String restaurantName;
+  final String logo;
+  final List<String> tags;
+  final double rating;
   const RestaurantCardDetails({Key? key,
-    // required this.image,
-    // required this.restaurantName,
-    // required this.deliveryTime,
-    // required this.logo,
-    // required this.tags,
-    // required this.rating,
+    required this.restaurantName,
+    required this.logo,
+    required this.tags,
+    required this.rating,
     // this.offer,
   }) : super(key: key);
 
@@ -29,7 +24,7 @@ class RestaurantCardDetails extends StatelessWidget {
         children: [
           CircleAvatar(
           maxRadius: 22,
-            backgroundImage: Image.asset('assets/logos/Burger-King-Logo.png').image,
+            backgroundImage: Image.asset(logo).image,
             backgroundColor: Colors.green,
           ),
           ConstrainedBox(
@@ -41,13 +36,13 @@ class RestaurantCardDetails extends StatelessWidget {
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(child: Text("Burger King")),
+                  Expanded(child: Text(restaurantName)),
                   Row(
                     children: [
                       RatingStars(
-                        rating: 3.5,
+                        rating: rating,
                       ),
-                      Text("3.5 (75k)")
+                      Text("$rating (75k)")
                     ],
                   )
                 ],
@@ -55,7 +50,7 @@ class RestaurantCardDetails extends StatelessWidget {
               subtitle: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(child: Text("American, Fast food, Burger, Sandwiches")),
+                  Expanded(child: Text(tags.join(", "))),
                   Icon(Icons.credit_card)
                 ],
               ),

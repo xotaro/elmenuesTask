@@ -8,7 +8,7 @@ class SpecialRestaurantMenu extends StatelessWidget {
   final String title;
   final Function onClick;
   final bool seeAllOption;
-  final List<RestaurantComponent> restaurants;
+  final List<Widget> restaurants;
   const SpecialRestaurantMenu(
       {Key? key,
       required this.title,
