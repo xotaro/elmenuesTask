@@ -10,7 +10,7 @@ class OptionComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return                           Padding(
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.fromLTRB(5,15,5,15),
       child: OutlinedButton(
         onPressed: fun(),
         child: Column(
