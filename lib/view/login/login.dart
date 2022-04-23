@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'login_vm.dart';
-import 'core/di/configuartion.dart';
+import '../../core/di/configuartion.dart';
 
 class LoginTest extends StatefulWidget {
   const LoginTest({Key? key}) : super(key: key);
@@ -66,7 +66,7 @@ class Login extends StatelessWidget {
             loginAction();
           },
           child: Text(
-            'Login',
+            'Login / SignUp',
             style: TextStyle(color: appColor.primary),
           ),
         ),

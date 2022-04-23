@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'core/db/data/restaurant.dart';
 import 'core/di/configuartion.dart';
-import 'login.dart';
+import 'view/login/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

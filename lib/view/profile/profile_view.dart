@@ -1,12 +1,12 @@
 import 'package:elmenues/core/di/configuartion.dart';
-import 'package:elmenues/login.dart';
+import 'package:elmenues/view/login/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
-import '../login_vm.dart';
-import '../theme/app_colors';
+import '../login/login_vm.dart';
+import '../../theme/app_colors';
 
 class ProfileView extends StatefulWidget {
    ProfileView({Key? key}) : super(key: key);

@@ -7,7 +7,7 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../login_vm.dart' as _i8;
+import '../../view/login/login_vm.dart' as _i8;
 import '../../populator.dart' as _i7;
 import '../../view/home/home_view_model.dart' as _i6;
 import '../db/db.dart' as _i3;

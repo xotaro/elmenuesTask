@@ -5,10 +5,10 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:injectable/injectable.dart';
-import 'package:provider/provider.dart';
 
-import 'constants.dart';
+import '../../constants.dart';
 import 'package:http/http.dart' as http;
+
 
 @singleton
 class LoginViewModel extends ChangeNotifier {

@@ -1,5 +1,5 @@
 import 'package:elmenues/view/home/home_screen.dart';
-import 'package:elmenues/view/profile_view.dart';
+import 'package:elmenues/view/profile/profile_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
