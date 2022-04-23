@@ -6,14 +6,14 @@ import 'package:provider/provider.dart';
 import 'login_vm.dart';
 import '../../core/di/configuartion.dart';
 
-class LoginTest extends StatefulWidget {
-  const LoginTest({Key? key}) : super(key: key);
+class LoginStart extends StatefulWidget {
+  const LoginStart({Key? key}) : super(key: key);
 
   @override
-  _LoginTestState createState() => _LoginTestState();
+  _LoginStartState createState() => _LoginStartState();
 }
 
-class _LoginTestState extends State<LoginTest> {
+class _LoginStartState extends State<LoginStart> {
   @override
   void initState() {
     super.initState();
@@ -48,30 +48,34 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-        OutlinedButton(
-          style: OutlinedButton.styleFrom(
-              side: BorderSide(
-                color: appColor.primary,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              padding: EdgeInsets.all(15),
+              backgroundColor: appColor.primary,
                 side: BorderSide(
                   color: appColor.primary,
                 ),
-              )),
-          onPressed: () {
-            loginAction();
-          },
-          child: Text(
-            'Login / SignUp',
-            style: TextStyle(color: appColor.primary),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(
+                    color: appColor.primary,
+                  ),
+                )),
+            onPressed: () {
+              loginAction();
+            },
+            child: Text(
+              'Login / SignUp',
+              style: TextStyle(color: Colors.white,fontSize: 16),
+            ),
           ),
-        ),
-        Text(loginError ?? ""),
-      ],
+          Text(loginError ?? ""),
+        ],
+      ),
     );
   }
 }

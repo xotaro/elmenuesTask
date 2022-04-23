@@ -7,13 +7,16 @@ import '../../core/domain/restaurant.dart' as Model;
 class HomeViewModel extends ChangeNotifier {
   List<Model.Restaurant> restaurants = [];
   List<Model.Restaurant> restaurantsOffers = [];
-
+  bool switcher=true;
   DbRepository _dbRepository;
   HomeViewModel(this._dbRepository){
     getAllRestaurants();
     getRestaurantOffers();
   }
-
+  void setSwitcher(bool x){
+    switcher=x;
+    notifyListeners();
+  }
   void getAllRestaurants() {
     _dbRepository.getAllRestaurants().then((value) {
       restaurants = value;

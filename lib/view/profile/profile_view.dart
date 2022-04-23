@@ -66,7 +66,13 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                         child: TextField(
                           controller: controller,
-                          decoration: new InputDecoration(
+                          decoration:  InputDecoration(
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.transparent),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.transparent),
+                              ),
                               contentPadding: EdgeInsets.all(5),
                               hintText: 'Enter New Name'
                           ),
@@ -108,7 +114,7 @@ class _ProfileViewState extends State<ProfileView> {
                         child: TextButton(
                           onPressed: ()  {
                             model.logoutAction();
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginTest(),));
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginStart(),));
                           },
                           child: Text("Log Out",style: TextStyle(fontSize:15,color: Colors.white),),
                         ),

@@ -7,7 +7,9 @@ import 'package:elmenues/view/home/components/offers_component.dart';
 import 'package:elmenues/view/home/components/restaurant_card.dart';
 import 'package:elmenues/view/home/components/restaurant_component.dart';
 import 'package:elmenues/view/home/components/special_restaurant_menu.dart';
+import 'package:elmenues/view/home/filter_screen.dart';
 import 'package:elmenues/view/home/home_view_model.dart';
+import 'package:elmenues/view/home/search_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -25,9 +27,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
+  TextEditingController searchController=TextEditingController();
+  bool switcher=true;
+ @override
+  void initState() {
+   // searchController
+
+   super.initState();
+  }
+
+@override
   Widget build(BuildContext context) {
-    PageController controller = PageController();
 
     return SafeArea(
       minimum: EdgeInsets.only(top: 0),
@@ -108,6 +118,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                 // borderRadius: BorderRadius.circular(10),
                                 ),
                             child: CupertinoTextField(
+                              controller: searchController,
+                              autofocus: false,
+                              onTap: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const SearchScreen()),
+                                );
+                              },
+
                               selectionHeightStyle: BoxHeightStyle.max,
                               prefix: Padding(
                                   padding: EdgeInsets.only(left: 5),
@@ -134,12 +153,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                   color: Colors.grey[200]!,
                                 ),
                                 borderRadius: BorderRadius.circular(10)),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
+                            child: Consumer<HomeViewModel>(
+                              builder: (context, value, child) => IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) =>  FilterScreen(restaurants: value.restaurants.length,)),
+                                  );
+                                },
+                                icon: Icon(
                                   //to add icon
-                                  Icons.filter_alt_outlined,
-                                  color: appColor.primary),
+                                    Icons.filter_alt_outlined,
+                                    color: appColor.primary),
+                              ),
                             ),
                           ),
                         )
@@ -230,37 +256,66 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .image,
                                   ),
                                   DishOption(
-                                    name: 'All',
-                                    image: Image.asset('assets/images/all.jpeg')
+                                    name: 'pizza',
+                                    image: Image.asset('assets/images/pizza.jpeg')
                                         .image,
                                   ),
                                   DishOption(
-                                    name: 'All',
-                                    image: Image.asset('assets/images/all.jpeg')
+                                    name: 'fried chicken',
+                                    image: Image.asset('assets/images/fried_chicken.jpeg')
                                         .image,
                                   ),
                                   DishOption(
-                                    name: 'All',
-                                    image: Image.asset('assets/images/all.jpeg')
+                                    name: 'pizza',
+                                    image: Image.asset('assets/images/pizza.jpeg')
                                         .image,
                                   ),
                                   DishOption(
-                                    name: 'All',
-                                    image: Image.asset('assets/images/all.jpeg')
+                                    name: 'fried chicken',
+                                    image: Image.asset('assets/images/fried_chicken.jpeg')
                                         .image,
                                   ),
                                   DishOption(
-                                    name: 'All',
-                                    image: Image.asset('assets/images/all.jpeg')
+                                    name: 'fried chicken',
+                                    image: Image.asset('assets/images/fried_chicken.jpeg')
                                         .image,
                                   ),
                                   DishOption(
-                                    name: 'All',
-                                    image: Image.asset('assets/images/all.jpeg')
+                                    name: 'fried chicken',
+                                    image: Image.asset('assets/images/fried_chicken.jpeg')
                                         .image,
                                   ),
+
                                 ],
                                 //                    SingleChildScrollView(
+                              ),
+                              ListTile(
+                                title:
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Restaurans (${model.restaurants.length})",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                                      RichText(
+                                        text: TextSpan(
+                                          children: [
+
+                                            WidgetSpan(
+                                              child: Icon(Icons.check_circle, size: 14,color: Colors.green,),
+                                            ),
+                                            TextSpan(
+                                              text: "ORDER ONLINE",
+                                              style: TextStyle(color: Colors.green)
+                                            ),
+                                          ],
+                                        ),
+                                      )
+
+                                    ],
+                                  ),
+                                trailing: CupertinoSwitch(value: model.switcher, onChanged: (x){
+                                 model.setSwitcher(x);
+                                })
+
                               ),
                               ListView.builder(
                                 physics: NeverScrollableScrollPhysics(),
@@ -412,4 +467,5 @@ void displayBottomSheet(BuildContext context) {
           ),
         );
       });
+
 }

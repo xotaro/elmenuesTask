@@ -48,8 +48,8 @@ class _DishesComponentState extends State<DishesComponent> {
             itemCount: widget.dishOptions.length,
             itemBuilder: (context, index) {
               return DishOption(
-                name: 'All',
-                image: Image.asset('assets/images/all.jpeg').image,
+                name: widget.dishOptions[index].name,
+                image: widget.dishOptions[index].image,
               )
                   .setIndex(index)
                   .setIsSelected(currentSelectedIndex == index)

@@ -20,17 +20,17 @@ class RestaurantCardDetails extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CircleAvatar(
-          maxRadius: 22,
-            backgroundImage: Image.asset(logo).image,
-            backgroundColor: Colors.green,
+          Padding(
+            padding: EdgeInsets.only(right: 15),
+            child: CircleAvatar(
+            maxRadius: 22,
+              backgroundImage: Image.asset(logo).image,
+              backgroundColor: Colors.green,
+            ),
           ),
-          ConstrainedBox(
-            constraints: BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width * 0.73,
-          ),
+          Expanded(
             child: ListTile(
               contentPadding: EdgeInsets.zero,
               title: Row(

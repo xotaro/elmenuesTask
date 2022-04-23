@@ -1,5 +1,8 @@
 import 'package:elmenues/populator.dart';
+import 'package:elmenues/view/home/filter_screen.dart';
 import 'package:elmenues/view/home/home_screen.dart';
+import 'package:elmenues/view/home/search_screen.dart';
+import 'package:elmenues/view/home_navigate.dart';
 import 'package:flutter/material.dart';
 
 import 'core/db/data/restaurant.dart';
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home:  LoginTest(),
+      home:  LoginStart(),
     );
   }
 }
