@@ -21,6 +21,7 @@ class LoginViewModel extends ChangeNotifier {
   String picture = "";
   String accessToken = "";
   String userIdToken = "";
+  String managmentToken="";
 
   LoginViewModel() {
     initAction();
@@ -83,6 +84,7 @@ class LoginViewModel extends ChangeNotifier {
       picture = profile['picture'];
       notifyListeners();
       userIdToken = idToken["sub"];
+      setManagToken();
     } catch (e, s) {
       print('login error: $e - stack: $s');
       connecting = false;
@@ -121,10 +123,9 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   Future<Map<String, dynamic>> changeName(String name) async {
-    print(userIdToken);
     var url = 'https://$AUTH0_DOMAIN/api/v2/users/$userIdToken';
     final response = await http.patch(Uri.parse(url),
-        headers: {'Authorization': 'Bearer $MANAGMENT_TOKEN'},
+        headers: {'Authorization': 'Bearer $managmentToken'},
         body: {'name': '$name'});
     this.name = jsonDecode(response.body)["name"];
     notifyListeners();
@@ -133,5 +134,12 @@ class LoginViewModel extends ChangeNotifier {
     } else {
       throw Exception('Failed to get user details');
     }
+  }
+ void setManagToken() async {
+ var resp= await  http.post(Uri.parse('https://dev-4i4d8qun.us.auth0.com/oauth/token'),
+      headers: { 'content-type': 'application/json' },
+        body: '{"client_id":"unFWtkmwzFqE73YngMq04tyQSwqBYEeo","client_secret":"32M7NMllwDyB8ZYCWoRA4qB3UP5m7eK3uZMbkCOJWuunO-3ieb0P8wwdJLloqYGL","audience":"https://dev-4i4d8qun.us.auth0.com/api/v2/","grant_type":"client_credentials"}'
+  );
+    managmentToken=jsonDecode(resp.body)["access_token"];
   }
 }
