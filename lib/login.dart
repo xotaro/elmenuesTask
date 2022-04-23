@@ -23,8 +23,8 @@ class _LoginTestState extends State<LoginTest> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: ChangeNotifierProvider<LoginViewModel>(
-          create: (context) => getIt(),
+        body: ChangeNotifierProvider<LoginViewModel>.value(
+          value: getIt<LoginViewModel>(),
           child: Consumer<LoginViewModel>(
             builder: (context, model, _) => Center(
               child: model.connecting

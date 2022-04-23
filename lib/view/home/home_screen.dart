@@ -33,8 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
       minimum: EdgeInsets.only(top: 0),
       child: Scaffold(
         // backgroundColor: Colors.grey,
-        body: ChangeNotifierProvider<HomeViewModel>(
-          create: (context) => getIt(),
+        body: ChangeNotifierProvider<HomeViewModel>.value(
+          value: getIt<HomeViewModel>(),
           child: Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: CustomScrollView(
@@ -283,6 +283,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           : Center(
                               child: CircularProgressIndicator(
                               color: appColor.primary,
+                                strokeWidth: 6,
+                                backgroundColor: Colors.white,
                             ))),
                 )
               ],
